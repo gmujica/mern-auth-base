@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const auth = require("../middleware/auth");
-const User = require("../models/userModel");
+const router = require("express").Router()
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const auth = require("../middleware/auth")
+const User = require("../models/userModel")
 
 router.post("/register", async (req, res) => {
   try {
@@ -35,7 +35,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       email,
       password: passwordHash,
-      displayName,
+      displayName
     });
     const savedUser = await newUser.save();
     res.json(savedUser);
@@ -67,6 +67,7 @@ router.post("/login", async (req, res) => {
       user: {
         id: user._id,
         displayName: user.displayName,
+        email: user.email
       },
     });
   } catch (err) {
